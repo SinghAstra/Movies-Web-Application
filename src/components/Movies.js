@@ -7,7 +7,6 @@ const Movies = () => {
    useEffect(()=>{
        fetchMoviesbyGenre();
    },[])
-   console.log("movies is ",movies);
   return (
     <div className='movies'>
         {movies.map(movie=>{
