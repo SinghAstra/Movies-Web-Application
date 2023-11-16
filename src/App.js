@@ -1,4 +1,5 @@
 import {  MovieProvider } from './Context'
+import Genre from './components/Genre';
 import Movies from './components/Movies';
 
 
