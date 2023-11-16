@@ -4,7 +4,7 @@ import Movie from './Movie';
 import Genre from './Genre';
 
 const Movies = () => {
-   const {movies,activeGenre,fetchMoviesbyGenre} = useContext(MoviesContext);
+   const {movies,loading,activeGenre,fetchMoviesbyGenre} = useContext(MoviesContext);
    useEffect(()=>{
        fetchMoviesbyGenre();
    },[activeGenre])
@@ -12,7 +12,7 @@ const Movies = () => {
     <>
     <Genre/>
     <div className='movies-container'>
-        {movies.map(movie=>{
+        {loading?<h1>Loading...</h1>:movies.map(movie=>{
             return <Movie movie={movie} key={movie.id}/>
         })}
     </div>

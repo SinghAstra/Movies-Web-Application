@@ -10,8 +10,9 @@ body {
 }
 .movie{
   width: 250px;
-  margin: 8px;
+  margin: 14px 10px;
   text-align: center;
+  cursor: pointer;
   position: relative;
   border-radius: 8px;
 }
@@ -19,12 +20,13 @@ body {
   border: 2px solid white;
   object-fit: cover;
   width: 100%;
+  height: 100%;
   border-radius: 8px;
 }
 .movie-info{
   position: absolute;
   color: white;
-  bottom: 8px;
+  bottom: 4px;
   right: 0px;
   justify-content: space-between;
   align-items: center;
@@ -82,5 +84,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+}
+.active-genre-button{
+  color: white;
+  background-color: black;
 }
 
