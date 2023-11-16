@@ -4,17 +4,8 @@ import slugify from 'slugify';
 
 const SearchBar = () => {
     const [value,setValue] = useState("");
-    const [timeOut,setTimeOut] = useState();
+    const [timeout,setTimeout] = useState(null);
     const navigate = useNavigate();
-    const startTimeOut = () =>{
-        if(timeOut){
-            clearTimeout(timeOut);
-        }
-        const newTimeOut = setTimeOut(()=>{
-            Navigate(value);
-        },500)
-        setTimeOut(newTimeOut);
-    }
     const Navigate = (value) =>{
         value = value.trim();
         if(value == ""){
@@ -28,7 +19,9 @@ const SearchBar = () => {
         <input 
         type='text'
         value={value}
-        onKeyUp={startTimeOut}
+        onKeyUp={()=>Navigate(value)}
+        className='searchbar'
+        placeholder='Movie Title...'
         onChange={(e) => {
             setValue(e.target.value);
           }}/>
