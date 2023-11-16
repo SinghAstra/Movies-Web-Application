@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 
 
 const Movie = ({movie}) => {
-  console.log("movie is ",movie);
     const handleBookmark = () => {
         console.log("handleBookmark is clicked.");
     }

@@ -9,16 +9,20 @@ export function MovieProvider(props) {
   const [genres, setGenres] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchedMovies, setSearchedMovies] = useState([]);
+  const [page,setPage] = useState(1);
+  const [totalPage,setTotalPage] = useState(null);
 
 
   const fetchMoviesbyGenre = async () => {
     setLoading(true);
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_genres=${activeGenre}&api_key=${process.env.REACT_APP_API_KEY}&with_origin_country=IN&page=${1}`
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${activeGenre}&api_key=${process.env.REACT_APP_API_KEY}&with_origin_country=IN&page=${page}`
     );
     const filteredMoviesbyGenre = await data.json();
     setLoading(false);
-    setMovies(filteredMoviesbyGenre.results);
+    console.log("filteredMoviesbyGenre.total_pages is ",filteredMoviesbyGenre.total_pages);
+    setTotalPage(filteredMoviesbyGenre.total_pages);
+    setMovies(movies.concat(filteredMoviesbyGenre.results));
   };
 
   const fetchGenre = async () => {
@@ -52,7 +56,10 @@ export function MovieProvider(props) {
     setLoading,
     fetchMoviesbyGenre,
     searchedMovies,
-    fetchMoviesbyTitle
+    fetchMoviesbyTitle,
+    page,
+    setPage,
+    totalPage
   }}>
     {props.children}
   </MoviesContext.Provider>
