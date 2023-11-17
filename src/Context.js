@@ -16,18 +16,18 @@ export function MovieProvider(props) {
   const fetchMoviesbyGenre = async () => {
     setLoading(true);
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?with_genres=${activeGenre}&api_key=${process.env.REACT_APP_API_KEY}&with_origin_country=IN&page=${page}`
+      `https://api.themoviedb.org/3/discover/movie?with_genres=${activeGenre}&api_key=${process.env.REACT_APP_API_KEY}&with_origin_country=US&page=${page}`
     );
+    console.log("movies is ",movies);
     const filteredMoviesbyGenre = await data.json();
-    setLoading(false);
-    console.log("filteredMoviesbyGenre.total_pages is ",filteredMoviesbyGenre.total_pages);
     setTotalPage(filteredMoviesbyGenre.total_pages);
     setMovies(movies.concat(filteredMoviesbyGenre.results));
+    setLoading(false);
   };
 
   const fetchGenre = async () => {
     const data = await fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&with_origin_country=IN&language=en-US`
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${process.env.REACT_APP_API_KEY}&with_origin_country=US&language=en-US`
     );
     const gen = await data.json();
     setGenres(gen.genres);
@@ -36,7 +36,7 @@ export function MovieProvider(props) {
   const fetchMoviesbyTitle = async (query) => {
     setLoading(true);
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&with_origin_country=IN&language=en-US&query=${query}&page=1&include_adult=false`
+      `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&with_origin_country=US&language=en-US&query=${query}&page=1&include_adult=false`
     );
     const searchmovies = await data.json();
     console.log("searchmovies is ",searchmovies);
