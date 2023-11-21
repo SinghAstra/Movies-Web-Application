@@ -102,3 +102,29 @@ body {
   outline: none;
 }
 
+.movie-container{
+  display: flex;
+}
+.movie-image-container{
+  width: 40%;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-weight: 600;
+}
+.movie-image-container img{
+  height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 6px 6px 30px black;
+}
+.movie-info-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+

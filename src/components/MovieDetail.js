@@ -19,7 +19,7 @@ const MovieDetail = () => {
           <img src={"https://image.tmdb.org/t/p/w500" + movie?.poster_path} alt='movie' />
           <p>{movie.status}</p>
         </div>
-        <div className='movie-info'>
+        <div className='movie-info-container'>
           <h4>{movie.title}</h4>
           <ul>
             {movie.genres.map(genre => {
