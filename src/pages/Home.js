@@ -6,7 +6,6 @@ import SearchedMovies from '../components/SearchedMovies';
 
 const Home = () => {
     const { query } = useParams();
-    console.log("query is ", query);
     return (
         <div>
             <SearchBar />

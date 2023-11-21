@@ -4,7 +4,6 @@ import Movie from './Movie';
 
 const SearchedMovies = ({query}) => {
     const {searchedMovies,fetchMoviesbyTitle,loading} = useContext(MoviesContext);
-    console.log("searchedMovies is ",searchedMovies);
     useEffect(()=>{
         fetchMoviesbyTitle(query);
     },[query])

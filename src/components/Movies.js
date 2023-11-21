@@ -8,14 +8,19 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Movies = () => {
   const { movies, setMovies, totalPage, loading, activeGenre, page, setPage, fetchMoviesbyGenre } = useContext(MoviesContext);
 
-  useEffect(() => {
-    setMovies([]);
-    setPage(1);
-    fetchMoviesbyGenre();
-  }, [activeGenre])
+    useEffect(() => {
+      setPage(1) 
+  }, []);
 
   useEffect(() => {
-    fetchMoviesbyGenre();
+    setMovies([]);
+    setPage(0);
+  }, [activeGenre]);
+
+  useEffect(() => {
+    if(page>0){
+      fetchMoviesbyGenre();
+    }
   }, [page])
 
   return (
@@ -26,7 +31,7 @@ const Movies = () => {
       >
         <AnimatePresence>
           <InfiniteScroll
-            dataLength={movies.length} 
+            dataLength={movies.length} //This is important field to render the next data
             next={() => setPage(page + 1)}
             hasMore={page < totalPage}
             loader={<h4>Loading...</h4>}
@@ -34,7 +39,7 @@ const Movies = () => {
             style={{ overflow: 'hidden' }}
           >
             <div className='movies-container'>
-             { movies.map(movie => {
+              {movies.map(movie => {
                 return <Movie movie={movie} key={movie.id} />
               })}
             </div>
