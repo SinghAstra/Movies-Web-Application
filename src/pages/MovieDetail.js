@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { MovieContext } from '../Context/MovieContext';
+import MovieCast from '../Components/MovieCast';
 
 const MovieDetail = () => {
     const { movieId } = useParams();
@@ -41,6 +42,8 @@ const MovieDetail = () => {
             <p><a href={`${movie.homepage}`} target='_blank'>Title : {movie.original_title}</a></p>
             <p> Genres : {movie.genres.map(genreId => genreId.name + " ")}</p>
             {(movie.adult) ? <p>Adult Movie</p> : ""}
+            <h4>Cast</h4>
+            <MovieCast movieId={movie.id}/>
             <p>Status : {movie.status}</p>
             <p>Release Date : {movie.release_date}</p>
             <p>Runtime : {convertMinToHours(movie.runtime)}</p>

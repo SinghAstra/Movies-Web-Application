@@ -6,7 +6,6 @@ import { MovieContext } from '../Context/MovieContext';
 const MoviesInTheatres = () => {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {genreMapping} = useContext(MovieContext);
     
 
     useEffect(() => {

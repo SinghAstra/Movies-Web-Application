@@ -4,7 +4,7 @@ body{
   font-family: monospace;
   color: white;
 }
-.movie-container{
+.movie-container,.cast-container{
   border: 2px solid white;
   border-radius: 8px;
   padding: 8px;
