@@ -5,6 +5,7 @@ import { MovieContext } from '../Context/MovieContext';
 import MovieCast from '../Components/MovieCast';
 import MovieExternalLinks from '../Components/MovieExternalLinks';
 import MovieImages from '../Components/MovieImages';
+import MovieRecommendation from '../Components/MovieRecommendation';
 
 const MovieDetail = () => {
     const { movieId } = useParams();
@@ -64,6 +65,7 @@ const MovieDetail = () => {
                 </div>
             })}
             <p>Languages : {movie.spoken_languages.map(lang=>lang.name+" ")}</p>
+            <MovieRecommendation movieId={movieId}/>
         </div>
     )
 }

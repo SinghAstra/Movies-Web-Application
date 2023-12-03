@@ -18,7 +18,6 @@ const MovieImages = ({movieId}) => {
                     }
                 }
             )
-            console.log("response.data.backdrops is ",response.data.backdrops);
             setImages(response.data.backdrops);
             setLoading(false);
         }
