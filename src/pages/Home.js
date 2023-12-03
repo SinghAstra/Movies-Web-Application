@@ -12,6 +12,9 @@ const Home = () => {
         <li>
           <Link to="/popular-movies">Popular Movies</Link>
         </li>
+        <li>
+          <Link to="/top-rated-movies">Top Rated Movies</Link>
+        </li>
       </ul>
     </div>
   )

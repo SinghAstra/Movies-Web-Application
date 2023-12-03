@@ -1,15 +1,14 @@
-import axios from 'axios';
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import MovieCard from '../Components/MovieCard';
 
-const PopularMovies = () => {
-    const [movies, setMovies] = useState();
+const TopRatedMovies = () => {
+    const [movies,setMovies] = useState();
     const [loading,setLoading] = useState(true);
-
-    useEffect(() => {
-        const getPopularMovies = async () => {
+    useEffect(()=>{
+        const getTopRatedMovies = async() => {
             const response = await axios.get(
-                `https://api.themoviedb.org/3/movie/popular`,
+                'https://api.themoviedb.org/3/movie/top_rated',
                 {
                     headers: {
                         "Content-Type": "application/json",
@@ -20,20 +19,19 @@ const PopularMovies = () => {
             setMovies(response.data.results);
             setLoading(false);
         }
-        getPopularMovies();
-    }, [])
-
+        getTopRatedMovies();
+    },[])
     if(loading){
         return <div>Loading...</div>
     }
 
     return (
         <div>
-            <h3>Popular Movies</h3>
+            <h3>Top Rated Movies</h3>
             {movies.map(movie =>
                 <MovieCard key={movie.id} movie={movie} />)}
         </div>
     )
 }
 
-export default PopularMovies
+export default TopRatedMovies

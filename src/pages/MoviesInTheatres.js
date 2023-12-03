@@ -10,7 +10,7 @@ const MoviesInTheatres = () => {
     
 
     useEffect(() => {
-        const fetchMoviesInTheatres = async () => {
+        const getMoviesInTheatres = async () => {
             setLoading(true);
             const response = await axios.get('https://api.themoviedb.org/3/movie/now_playing',
                 {
@@ -23,7 +23,7 @@ const MoviesInTheatres = () => {
             setMovies(response.data);
             setLoading(false);
         }
-        fetchMoviesInTheatres();
+        getMoviesInTheatres();
     }, [])
 
     if (loading) {
