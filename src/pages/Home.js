@@ -1,17 +1,17 @@
 import React from 'react'
-import SearchBar from '../components/SearchBar'
-import Movies from '../components/Movies'
-import { useParams } from 'react-router-dom';
-import SearchedMovies from '../components/SearchedMovies';
+import { Link } from 'react-router-dom'
 
 const Home = () => {
-    const { query } = useParams();
-    return (
-        <div>
-            <SearchBar />
-            {query?<SearchedMovies query={query}/>:<Movies/>}
-        </div>
-    )
+  return (
+    <div>
+      This is Web Application based on Movies API.
+      <ul>
+        <li>
+          <Link to="/movies-in-theatres">Movies In Theatres</Link>
+        </li>
+      </ul>
+    </div>
+  )
 }
 
 export default Home
