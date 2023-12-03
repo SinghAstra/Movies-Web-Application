@@ -26,12 +26,15 @@ const MovieRecommendation = ({movieId}) => {
     if(loading){
         return <div>Loading...</div>
     }
-
+    if(movies.length===0){
+        return ;
+    }
     return (
         <div>
             <h3>Recommended Movies</h3>
-            {movies.map(movie =>
-                <MovieCard key={movie.id} movie={movie} />)}
+            {movies.map(movie =>{
+                return movie.backdrop_path&&<MovieCard key={movie.id} movie={movie} />
+            })}
         </div>
     )
 }

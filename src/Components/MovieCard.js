@@ -4,7 +4,6 @@ import { MovieContext } from '../Context/MovieContext';
 
 const MovieCard = ({ movie }) => {
     const {baseURL,genreMapping} = useContext(MovieContext);
-
     return (
         <div className='movie-container'>
             <Link to={`/movie/${movie.id}`}>

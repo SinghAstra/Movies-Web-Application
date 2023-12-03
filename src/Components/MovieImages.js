@@ -30,7 +30,7 @@ const MovieImages = ({movieId}) => {
     return (
         <div>
             {images.map(image =>
-                <img src={`${baseURL}${image.file_path}`} alt='movie'/>)}
+                <img src={`${baseURL}${image.file_path}`} alt='movie' key={image.file_path}/>)}
         </div>
     )
 }

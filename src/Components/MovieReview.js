@@ -18,7 +18,6 @@ const MovieReview = ({movieId}) => {
                 }
             )
             setMovieReviews(response.data.results);
-            console.log("review is ",response.data.results);
             setLoading(false);
         }
         getMovieReviews();

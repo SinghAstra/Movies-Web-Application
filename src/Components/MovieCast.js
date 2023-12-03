@@ -1,11 +1,11 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
-import { MovieContext } from '../Context/MovieContext';
+import MovieCastCard from './MovieCastCard';
 
-const MovieCast = ({movieId}) => {
+const MovieCast = ({ movieId }) => {
     const [cast, setCast] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {baseURL} = useContext(MovieContext);
+
 
     useEffect(() => {
         const getMovieCast = async () => {
@@ -19,7 +19,6 @@ const MovieCast = ({movieId}) => {
                 }
             )
             setCast(response.data.cast);
-            console.log("response.data is ",response.data);
             setLoading(false);
         }
         getMovieCast();
@@ -31,12 +30,7 @@ const MovieCast = ({movieId}) => {
     return (
         <div>
             <h3>Movie Cast</h3>
-            {cast.map(castElem =>
-               { return <div key={castElem.id} className='cast-container'>
-               {(castElem.profile_path)? <img src={`${baseURL}${castElem.profile_path}`} alt='cast'/>:""}
-                <p>Charcter : {castElem.character}</p>
-                <p>Name : {castElem.name}</p>
-               </div>} )}
+            {cast.map(castElem => { return castElem.profile_path && <MovieCastCard key={castElem.id} castElem={castElem} /> })}
         </div>
     )
 }

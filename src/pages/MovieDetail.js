@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { MovieContext } from '../Context/MovieContext';
 import MovieCast from '../Components/MovieCast';
 import MovieExternalLinks from '../Components/MovieExternalLinks';
@@ -17,6 +17,7 @@ const MovieDetail = () => {
 
     useEffect(() => {
         const getMovieDetailById = async () => {
+            setLoading(true);
             const response = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}`,
                 {
                     headers: {
@@ -26,7 +27,6 @@ const MovieDetail = () => {
                 }
             )
             setMovie(response.data);
-            console.log(response.data);
             setLoading(false);
         }
         getMovieDetailById();
@@ -43,7 +43,7 @@ const MovieDetail = () => {
     return (
         <div>
             <img src={`${baseURL}${movie.poster_path}`} alt="movie" />
-            <p><a href={`${movie.homepage}`} target='_blank'>Title : {movie.original_title}</a></p>
+            <p><a href={`${movie.homepage}`} target='_blank' rel="noreferrer">Title : {movie.original_title}</a></p>
             <p> Genres : {movie.genres.map(genreId => genreId.name + " ")}</p>
             {(movie.adult) ? <p>Adult Movie</p> : ""}
             <MovieReview movieId={movie.id}/>
@@ -59,7 +59,7 @@ const MovieDetail = () => {
             <h5>Production Companies : </h5>
             {movie.production_companies.map(prodComp => {
                 return <div key={prodComp.id}>
-                    <img src={`${baseURL}${prodComp.logo_path}`} alt='production Company' />
+                    {prodComp.logo_path&&<img src={`${baseURL}${prodComp.logo_path}`} alt='production Company' />}
                     <p> Production Company Name : {prodComp.name} </p>
                     <p> Country of Origin : {prodComp.origin_country}</p>
                 </div>
