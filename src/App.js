@@ -5,6 +5,7 @@ import MovieDetail from './Pages/MovieDetail';
 import { MovieProvider } from './Context/MovieContext';
 import PopularMovies from './Pages/PopularMovies';
 import TopRatedMovies from './Pages/TopRatedMovies';
+import UpcomingMovies from './Pages/UpcomingMovies';
 
 
 
@@ -17,6 +18,7 @@ function App() {
           <Route path='/movies-in-theatres' element={<MoviesInTheatres/>}/>
           <Route path='/popular-movies' element={<PopularMovies/>}/>
           <Route path='/top-rated-movies' element={<TopRatedMovies/>}/>
+          <Route path='/upcoming-movies' element={<UpcomingMovies/>}/>
           <Route path='/movie/:movieId' element={<MovieDetail/>}/>
         </Routes>
       </div>
