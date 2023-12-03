@@ -8,6 +8,7 @@ import MovieImages from '../Components/MovieImages';
 import MovieRecommendation from '../Components/MovieRecommendation';
 import MovieReview from '../Components/MovieReview';
 import SimilarMovies from '../Components/SimilarMovies';
+import MovieVideos from '../Components/MovieVideos';
 
 const MovieDetail = () => {
     const { movieId } = useParams();
@@ -66,6 +67,7 @@ const MovieDetail = () => {
                 </div>
             })}
             <p>Languages : {movie.spoken_languages.map(lang=>lang.name+" ")}</p>
+            <MovieVideos movieId={movie.id}/>
             <MovieImages movieId={movie.id}/>
             <MovieCast movieId={movie.id}/>
             <MovieRecommendation movieId={movieId}/>
