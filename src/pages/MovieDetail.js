@@ -7,6 +7,7 @@ import MovieExternalLinks from '../Components/MovieExternalLinks';
 import MovieImages from '../Components/MovieImages';
 import MovieRecommendation from '../Components/MovieRecommendation';
 import MovieReview from '../Components/MovieReview';
+import SimilarMovies from '../Components/SimilarMovies';
 
 const MovieDetail = () => {
     const { movieId } = useParams();
@@ -43,7 +44,7 @@ const MovieDetail = () => {
     return (
         <div>
             <img src={`${baseURL}${movie.poster_path}`} alt="movie" />
-            <p><a href={`${movie.homepage}`} target='_blank' rel="noreferrer">Title : {movie.original_title}</a></p>
+            <p><a href={`${movie.homepage}`} target='_blank' rel="noreferrer">Title : {movie.title}</a></p>
             <p> Genres : {movie.genres.map(genreId => genreId.name + " ")}</p>
             {(movie.adult) ? <p>Adult Movie</p> : ""}
             <MovieReview movieId={movie.id}/>
@@ -68,6 +69,7 @@ const MovieDetail = () => {
             <MovieImages movieId={movie.id}/>
             <MovieCast movieId={movie.id}/>
             <MovieRecommendation movieId={movieId}/>
+            <SimilarMovies movieId={movieId}/>
         </div>
     )
 }
