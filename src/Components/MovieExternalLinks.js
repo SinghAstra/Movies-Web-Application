@@ -21,6 +21,7 @@ const MovieExternalLinks = ({movieId}) => {
         }
         getExternalLinks();
     },[movieId])
+    
     if(loading){
         return <div>Loading...</div>
     }

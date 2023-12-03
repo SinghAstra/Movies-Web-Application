@@ -4,6 +4,7 @@ import { Link, useParams } from 'react-router-dom'
 import { MovieContext } from '../Context/MovieContext';
 import MovieCast from '../Components/MovieCast';
 import MovieExternalLinks from '../Components/MovieExternalLinks';
+import MovieImages from '../Components/MovieImages';
 
 const MovieDetail = () => {
     const { movieId } = useParams();
@@ -43,6 +44,7 @@ const MovieDetail = () => {
             <p><a href={`${movie.homepage}`} target='_blank'>Title : {movie.original_title}</a></p>
             <p> Genres : {movie.genres.map(genreId => genreId.name + " ")}</p>
             {(movie.adult) ? <p>Adult Movie</p> : ""}
+            <MovieImages movieId={movie.id}/>
             <MovieExternalLinks movieId={movie.id}/>
             <MovieCast movieId={movie.id}/>
             <p>Status : {movie.status}</p>
