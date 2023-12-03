@@ -6,6 +6,7 @@ import MovieCast from '../Components/MovieCast';
 import MovieExternalLinks from '../Components/MovieExternalLinks';
 import MovieImages from '../Components/MovieImages';
 import MovieRecommendation from '../Components/MovieRecommendation';
+import MovieReview from '../Components/MovieReview';
 
 const MovieDetail = () => {
     const { movieId } = useParams();
@@ -45,9 +46,8 @@ const MovieDetail = () => {
             <p><a href={`${movie.homepage}`} target='_blank'>Title : {movie.original_title}</a></p>
             <p> Genres : {movie.genres.map(genreId => genreId.name + " ")}</p>
             {(movie.adult) ? <p>Adult Movie</p> : ""}
-            <MovieImages movieId={movie.id}/>
+            <MovieReview movieId={movie.id}/>
             <MovieExternalLinks movieId={movie.id}/>
-            <MovieCast movieId={movie.id}/>
             <p>Status : {movie.status}</p>
             <p>Release Date : {movie.release_date}</p>
             <p>Runtime : {convertMinToHours(movie.runtime)}</p>
@@ -65,6 +65,8 @@ const MovieDetail = () => {
                 </div>
             })}
             <p>Languages : {movie.spoken_languages.map(lang=>lang.name+" ")}</p>
+            <MovieImages movieId={movie.id}/>
+            <MovieCast movieId={movie.id}/>
             <MovieRecommendation movieId={movieId}/>
         </div>
     )

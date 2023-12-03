@@ -16,7 +16,6 @@ const MovieExternalLinks = ({movieId}) => {
                 }
             )
             setLinks(response.data);
-            console.log("response is ",response);
             setLoading(false);
         }
         getExternalLinks();
