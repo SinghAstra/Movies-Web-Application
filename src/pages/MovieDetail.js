@@ -7,7 +7,7 @@ const MovieDetail = () => {
     const { movieId } = useParams();
     const [movie, setMovie] = useState();
     const [loading, setLoading] = useState(true);
-    const { genreMapping, baseURL } = useContext(MovieContext);
+    const {  baseURL } = useContext(MovieContext);
 
 
     useEffect(() => {
